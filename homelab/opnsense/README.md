@@ -55,8 +55,6 @@ The cutover is the only disruptive step, so it happens with console access at a 
 
 **A leftover virtual NIC can break a passthrough build.** After passthrough, the VM still had its original placeholder virtio NIC bridged onto the same subnet. Two interfaces on one subnet caused ARP and routing confusion: ping worked for a moment, then dropped to "Destination Host Unreachable." Removing the stray NIC and rebooting made it 100% stable.
 
-**Test authentication changes before you commit to them.** While setting up TOTP two-factor login, I switched the admin authentication server to the new TOTP server without testing it first with OPNsense's built-in tester. The GUI stopped prompting for a code and every login failed. I recovered with OPNsense's official non-destructive procedure: booted the install ISO and used the installer's "Password Reset / Recover Installation" option (a full reinstall would have wiped everything). The config came through completely intact. The rule I follow now: **always validate in System > Access > Tester before switching auth servers.**
-
 **Read the live system, not just the docs.** I initially thought OPNsense needed an add-on for brute-force protection. Inspecting the auto-generated rules showed native lockout was already active. Add-ons like CrowdSec are an upgrade, not a baseline requirement.
 
 **Open question:** keep the firewall as a VM (cheap, but the network depends on the hypervisor being up) or move it to dedicated hardware later.
