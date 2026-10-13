@@ -18,6 +18,10 @@ The homelab is the first chapter. As I pick up new tools and platforms they get 
 - **Set Claude up to administer the lab through a self-hosted MCP server**, with a written runbook, its own credentials, and an audit trail. I also fixed a bug in that server that had filled its memory file with noise (about 95% of 187 KB). [Read more](homelab/proxmox-mcp/)
 - **Built every service on a default-deny design:** one container per service, a firewall policy for each, no SSH into containers, and patching and backups on a weekly schedule.
 
+## How I use AI here
+
+I designed this lab: the network layout, firewall policy, storage split and backup strategy, and I troubleshoot it myself. I also set up a self-hosted MCP server and a written runbook so Claude can handle routine work under my rules: patch checks, health reviews, small config changes, and keeping the documentation current. It uses its own credentials and logs every change. I review what it does, and the decisions and fixes described in this repo are mine. Running AI this way taught me how to give automation real access safely. Details are in the [Proxmox MCP write-up](homelab/proxmox-mcp/).
+
 ## Homelab at a glance
 
 A single Proxmox VE host (Intel i7-10700K, 8 cores, SSD + HDD tiers) running lightweight LXC containers for each service, plus VMs where a full OS is required. Everything is default-deny on the firewall, patched weekly, and backed up weekly.

@@ -42,6 +42,8 @@ WantedBy=multi-user.target
 
 ## The Claude skill on top
 
+For how I split the work between me and the assistant, see [How I use AI here](../../README.md#how-i-use-ai-here).
+
 Day-to-day administration goes through a custom Claude skill, `proxmox-homelab`. It triggers on requests like "check my server", "update pihole", or "add a firewall rule" and encodes the lab's rules:
 
 1. **Load state first.** Every session starts by reading the lab's memory file so the assistant knows the current configuration before touching anything.
