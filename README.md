@@ -1,4 +1,4 @@
-# Zach's Tech Showcase
+# Zach's Showcase
 
 A running record of the technology I build, break, and fix outside of work. Every project here is something I actually run, with the configs, the design decisions, and the troubleshooting stories that came out of it.
 
