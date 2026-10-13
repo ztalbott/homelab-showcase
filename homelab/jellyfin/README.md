@@ -1,4 +1,4 @@
-# Jellyfin
+# Jellyfin (Media server)
 
 Self-hosted media server, deliberately kept off the internet.
 

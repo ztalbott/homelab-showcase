@@ -1,4 +1,4 @@
-# OPNsense Firewall VM
+# OPNsense Firewall VM (Firewall / router)
 
 A virtualized OPNsense firewall with a dedicated, passed-through NIC, built in a sandbox and staged to replace the consumer router as the network's gateway.
 

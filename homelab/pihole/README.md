@@ -1,4 +1,4 @@
-# Pi-hole
+# Pi-hole (DNS + DHCP)
 
 Network-wide DNS filtering and the DHCP server for the whole LAN, running in a tiny LXC.
 

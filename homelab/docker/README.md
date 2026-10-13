@@ -1,4 +1,4 @@
-# Docker + Portainer
+# Docker + Portainer (Containers)
 
 A dedicated LXC that hosts Docker workloads, managed through Portainer's web UI.
 

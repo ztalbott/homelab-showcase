@@ -1,4 +1,4 @@
-# Uptime Kuma
+# Uptime Kuma (Monitoring)
 
 Self-hosted uptime monitoring for every service in the lab.
 

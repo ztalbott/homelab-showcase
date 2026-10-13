@@ -1,4 +1,4 @@
-# Tailscale
+# Tailscale (VPN)
 
 Remote access to the whole lab without opening a single inbound port on the router.
 

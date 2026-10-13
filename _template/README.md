@@ -1,4 +1,4 @@
-# Project or Service Name
+# Project or Service Name (Category, e.g. DNS or VPN)
 
 One or two sentences: what it is and why I run it.
 

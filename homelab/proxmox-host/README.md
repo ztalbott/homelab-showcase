@@ -1,4 +1,4 @@
-# Proxmox VE Host
+# Proxmox VE Host (Hypervisor)
 
 The bare-metal hypervisor everything else runs on. It owns storage, the network bridge, the patch schedule, and backups.
 

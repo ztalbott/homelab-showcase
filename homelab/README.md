@@ -31,14 +31,14 @@ The LXCs together use under 4 GB of RAM. Containers are the default; VMs are res
 
 ## How it's organized
 
-- [proxmox-host](proxmox-host/): storage pools, patching, backups, host hardening
-- [pihole](pihole/): DNS and DHCP for the whole network
-- [jellyfin](jellyfin/): media server with HDD bind mounts and no internet route
-- [docker](docker/): container host for app workloads
-- [tailscale](tailscale/): remote access without opening ports
-- [proxmox-mcp](proxmox-mcp/): self-hosted MCP server and the Claude skill that drives it
-- [uptime-kuma](uptime-kuma/): health checks for every service
-- [opnsense](opnsense/): virtualized firewall build with PCIe passthrough
+- [proxmox-host](proxmox-host/) **(Hypervisor)**: storage pools, patching, backups, host hardening
+- [pihole](pihole/) **(DNS + DHCP)**: DNS and DHCP for the whole network
+- [jellyfin](jellyfin/) **(Media server)**: media server with HDD bind mounts and no internet route
+- [docker](docker/) **(Containers)**: container host for app workloads
+- [tailscale](tailscale/) **(VPN)**: remote access without opening ports
+- [proxmox-mcp](proxmox-mcp/) **(AI automation)**: self-hosted MCP server and the Claude skill that drives it
+- [uptime-kuma](uptime-kuma/) **(Monitoring)**: health checks for every service
+- [opnsense](opnsense/) **(Firewall / router)**: virtualized firewall build with PCIe passthrough
 
 ## Roadmap
 

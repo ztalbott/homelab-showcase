@@ -1,4 +1,4 @@
-# Proxmox MCP Server
+# Proxmox MCP Server (AI automation)
 
 A self-hosted [Model Context Protocol](https://modelcontextprotocol.io) server that lets Claude manage the lab: list and configure guests, take snapshots and backups, edit firewall rules, run commands, and keep a running memory of the lab's state.
 

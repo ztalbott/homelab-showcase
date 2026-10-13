@@ -32,16 +32,16 @@ A single Proxmox VE host (Intel i7-10700K, 8 cores, SSD + HDD tiers) running lig
 
 ### Services
 
-| Service | Type | Role | Write-up |
-| --- | --- | --- | --- |
-| Proxmox VE | Bare-metal host | Hypervisor, storage, backups, patching | [proxmox-host](homelab/proxmox-host/) |
-| Pi-hole | LXC | Network-wide DNS filtering and DHCP | [pihole](homelab/pihole/) |
-| Jellyfin | LXC | Media server, intentionally LAN-only | [jellyfin](homelab/jellyfin/) |
-| Docker + Portainer | LXC | Container host for app workloads | [docker](homelab/docker/) |
-| Tailscale | LXC | VPN subnet router for remote access | [tailscale](homelab/tailscale/) |
-| Proxmox MCP | LXC | MCP server so Claude can manage the lab | [proxmox-mcp](homelab/proxmox-mcp/) |
-| Uptime Kuma | LXC | Service health monitoring | [uptime-kuma](homelab/uptime-kuma/) |
-| OPNsense | VM | Firewall/router, staged for cutover | [opnsense](homelab/opnsense/) |
+| Service | Category | Type | Role | Write-up |
+| --- | --- | --- | --- | --- |
+| Proxmox VE | Hypervisor | Bare-metal host | Hypervisor, storage, backups, patching | [proxmox-host](homelab/proxmox-host/) |
+| Pi-hole | DNS + DHCP | LXC | Network-wide DNS filtering and DHCP | [pihole](homelab/pihole/) |
+| Jellyfin | Media server | LXC | Media server, intentionally LAN-only | [jellyfin](homelab/jellyfin/) |
+| Docker + Portainer | Containers | LXC | Container host for app workloads | [docker](homelab/docker/) |
+| Tailscale | VPN | LXC | VPN subnet router for remote access | [tailscale](homelab/tailscale/) |
+| Proxmox MCP | AI automation | LXC | MCP server so Claude can manage the lab | [proxmox-mcp](homelab/proxmox-mcp/) |
+| Uptime Kuma | Monitoring | LXC | Service health monitoring | [uptime-kuma](homelab/uptime-kuma/) |
+| OPNsense | Firewall / router | VM | Firewall/router, staged for cutover | [opnsense](homelab/opnsense/) |
 
 ### Topology
 
