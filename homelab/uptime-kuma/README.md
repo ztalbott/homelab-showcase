@@ -2,6 +2,8 @@
 
 Self-hosted uptime monitoring for every service in the lab.
 
+**What this shows:** Monitoring design, choosing the right health signal for each service, and running services as least-privilege users.
+
 | | |
 | --- | --- |
 | Guest | LXC 108 |

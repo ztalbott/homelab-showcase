@@ -2,6 +2,8 @@
 
 Network-wide DNS filtering and the DHCP server for the whole LAN, running in a tiny LXC.
 
+**What this shows:** DNS and DHCP design, IP address planning, and network-wide policy enforcement without per-device setup.
+
 | | |
 | --- | --- |
 | Guest | LXC 101 |

@@ -2,6 +2,8 @@
 
 Remote access to the whole lab without opening a single inbound port on the router.
 
+**What this shows:** Secure remote access with zero open inbound ports, and service isolation.
+
 | | |
 | --- | --- |
 | Guest | LXC 106 |

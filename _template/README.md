@@ -2,6 +2,8 @@
 
 One or two sentences: what it is and why I run it.
 
+**What this shows:** the skills or outcomes this project demonstrates, in one line.
+
 | | |
 | --- | --- |
 | Where it runs | e.g. LXC, VM, cloud account, laptop |

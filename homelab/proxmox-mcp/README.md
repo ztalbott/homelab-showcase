@@ -2,6 +2,8 @@
 
 A self-hosted [Model Context Protocol](https://modelcontextprotocol.io) server that lets Claude manage the lab: list and configure guests, take snapshots and backups, edit firewall rules, run commands, and keep a running memory of the lab's state.
 
+**What this shows:** AI-assisted operations with guardrails, debugging and patching a Python service, and treating automation like an accountable admin.
+
 | | |
 | --- | --- |
 | Guest | LXC 107 |

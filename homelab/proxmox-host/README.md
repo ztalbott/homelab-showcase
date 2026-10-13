@@ -2,6 +2,8 @@
 
 The bare-metal hypervisor everything else runs on. It owns storage, the network bridge, the patch schedule, and backups.
 
+**What this shows:** Virtualization, storage tiering, patch management, and backup and recovery, including finding and fixing a backup failure.
+
 ## Setup
 
 - Proxmox VE 9.x on an Intel i7-10700K workstation with 16 GB RAM.

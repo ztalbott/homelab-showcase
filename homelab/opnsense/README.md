@@ -2,6 +2,8 @@
 
 A virtualized OPNsense firewall with a dedicated, passed-through NIC, built in a sandbox and staged to replace the consumer router as the network's gateway.
 
+**What this shows:** PCIe passthrough and IOMMU, firewall design, and planning a disruptive network cutover so the live network never goes down.
+
 | | |
 | --- | --- |
 | Guest | VM 200 |

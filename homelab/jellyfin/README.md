@@ -2,6 +2,8 @@
 
 Self-hosted media server, deliberately kept off the internet.
 
+**What this shows:** Deliberate network isolation, storage separation between apps and data, and making a security tradeoff on purpose.
+
 | | |
 | --- | --- |
 | Guest | LXC 102 |

@@ -2,6 +2,8 @@
 
 A dedicated LXC that hosts Docker workloads, managed through Portainer's web UI.
 
+**What this shows:** Container platform design (Docker inside LXC), least-exposure firewalling, and catching drift between documentation and reality.
+
 | | |
 | --- | --- |
 | Guest | LXC 105 |
