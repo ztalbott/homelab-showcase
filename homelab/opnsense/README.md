@@ -12,6 +12,7 @@ A virtualized OPNsense firewall with a dedicated, passed-through NIC, built in a
 | NICs | Dual-port Intel 82576, both ports passed through |
 | Version | OPNsense 26.7 |
 | Status | Installed and configured, awaiting cutover |
+| Starts on boot | Yes |
 
 ## Setup
 
@@ -42,14 +43,16 @@ OPNsense is FreeBSD-based, so it has to be a VM, not an LXC.
 - **DNS:** Pi-hole is the DNS server, the built-in Unbound resolver is disabled, and WAN-supplied DNS is not allowed to override it.
 - **DHCP:** disabled on OPNsense's LAN. Pi-hole keeps DHCP.
 - **WAN:** DHCP from the ISP, block private and bogon networks, IPv6 off for now.
+- **Backups:** included in the weekly backup job (about 1.8 GB per dump).
 - **Brute-force protection:** OPNsense's native lockout table is active by default and blocks repeated failed logins to the web UI and SSH. Staying current on updates matters for it.
 
 ### Cutover plan
 
-1. Finish firewall rules, including a LAN rule forcing all DNS to Pi-hole.
-2. Verify routing on an isolated bench switch with a laptop.
-3. Move the current router to access-point mode and give OPNsense the gateway address.
-4. Connect WAN, check for firmware updates, and clone the old router's WAN MAC if the ISP doesn't issue a lease.
+1. Get the WAN port (`igb0`) showing up inside the guest again. It currently doesn't, and I'm troubleshooting that first.
+2. Finish firewall rules, including a LAN rule forcing all DNS to Pi-hole.
+3. Verify routing on an isolated bench switch with a laptop.
+4. Move the current router to access-point mode and give OPNsense the gateway address.
+5. Connect WAN, check for firmware updates, and clone the old router's WAN MAC if the ISP doesn't issue a lease.
 
 The cutover is the only disruptive step, so it happens with console access at a low-stakes time.
 

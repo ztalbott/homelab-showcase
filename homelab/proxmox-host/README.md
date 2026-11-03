@@ -34,12 +34,31 @@ Apps and OS images stay on SSD; anything big and sequential (movies, backups) st
 0 2 * * 0  pct exec 105 -- sh -c 'apt-get update && apt-get -y upgrade && docker system prune -f' >> /var/log/docker-update.log 2>&1
 0 2 * * 0  pct exec 106 -- sh -c 'apt-get update && apt-get -y upgrade'                >> /var/log/tailscale-update.log 2>&1
 0 2 * * 0  pct exec 107 -- sh -c 'apt-get update && apt-get -y upgrade'                >> /var/log/mcp-update.log 2>&1
+0 2 * * 0  pct exec 108 -- sh -c 'apt-get update && apt-get -y upgrade'                >> /var/log/kuma-update.log 2>&1
 
-# Sunday 02:30: the host itself, rebooting only if a kernel update asks for it
-30 2 * * 0 apt-get update && apt-get -y full-upgrade && [ -f /var/run/reboot-required ] && reboot >> /var/log/proxmox-update.log 2>&1
+# Sunday 02:30: the host itself, via a script that knows when a reboot is needed
+30 2 * * 0 /usr/local/bin/host-update.sh >> /var/log/proxmox-update.log 2>&1
 ```
 
-_Sanitized and representative of the live crontab._
+The host script upgrades, then reboots if either the standard reboot flag exists or the running kernel isn't the newest one installed. That second check matters on Proxmox (see [lessons learned](#lessons-learned)).
+
+```bash
+#!/bin/sh
+# /usr/local/bin/host-update.sh
+set -e
+apt-get update
+apt-get -y full-upgrade
+
+running=$(uname -r)
+newest=$(ls /boot/vmlinuz-*-pve | sed 's|/boot/vmlinuz-||' | sort -V | tail -n 1)
+
+if [ -f /var/run/reboot-required ] || [ "$running" != "$newest" ]; then
+    echo "$(date): rebooting ($running -> $newest)"
+    reboot
+fi
+```
+
+_Sanitized and representative of the live crontab and script._ VMs patch from inside the guest; OPNsense uses its own firmware updater. Changes to host config like this one are committed to a local git repo, so every edit has a history and a backup copy (for example, the old crontab was saved before the switch).
 
 ### Weekly backups (vzdump)
 
@@ -68,4 +87,6 @@ Running backups an hour before patching means there is always a fresh restore po
 
 **Verify the docs against the machine.** A routine review found SSH listening on one container even though the docs said it had never been installed. It was masked and verified closed, and every review since checks all containers rather than trusting the record.
 
-**Confirm automation actually fires.** The host's reboot-if-required logic hadn't been observed triggering on its own; the last kernel reboot was done by hand. Automation is only "done" once I've seen it work.
+**Confirm automation actually fires.** The host's reboot-if-required logic had never been seen triggering on its own; the last kernel reboot had been done by hand. A full review showed why: Proxmox kernel upgrades don't create `/var/run/reboot-required`, so the cron job's condition was never true. The host was still running an older kernel than the one installed, and old kernels were piling up on the root disk. I replaced the one-liner with a script that also compares the running kernel to the newest installed one, rebooted into the current kernel (every container and the firewall VM came back on their own), and purged 21 old kernel images. Root disk usage dropped from 35 GB to 13 GB. The same review caught that the Uptime Kuma container had been left out of the patch cron, so it was 105 packages behind; it's patched and in the schedule now.
+
+**Keep a fallback kernel.** When purging, I kept the running kernel, the one before it, and the newest of the previous series (the metapackage depends on it). A bad kernel update can then be rolled back from the boot menu instead of from a rescue USB.

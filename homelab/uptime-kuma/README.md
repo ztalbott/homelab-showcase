@@ -35,9 +35,11 @@ sudo -u uptimekuma pm2 save
 
 - Runs as a dedicated, unprivileged `uptimekuma` user, never as root.
 - **Firewall:** only the web UI port (3001) is open, and only from the LAN.
-- Included in the weekly backup job now that it holds real monitor configuration.
+- Included in the weekly backup job now that it holds real monitor configuration, and patched by the host's Sunday update cron.
 
 ### Monitors
+
+The admin account is set up and the first monitor is live. The rest of the plan below is being added one service at a time.
 
 | Target | Check type |
 | --- | --- |

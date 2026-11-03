@@ -14,6 +14,7 @@ The homelab is the first chapter. As I pick up new tools and platforms they get 
 ## Highlights
 
 - **Found and fixed a backup job that had silently failed for three months.** I traced it to a misnamed storage target, extended coverage to every guest (several had never been backed up), and restored protection the same day. [Read more](homelab/proxmox-host/#lessons-learned)
+- **Caught host automation that had never worked.** The weekly patch job was supposed to reboot after kernel updates but never did, because Proxmox doesn't set the reboot flag for kernels. I rewrote it to check the running kernel against the newest installed one and cleaned out 21 stale kernels, cutting root disk use from 35 GB to 13 GB. [Read more](homelab/proxmox-host/#lessons-learned)
 - **Built a firewall VM with dedicated network hardware passed through to it**, staged next to the live network so day-to-day traffic was never disrupted. [Read more](homelab/opnsense/)
 - **Set Claude up to administer the lab through a self-hosted MCP server**, with a written runbook, its own credentials, and an audit trail. I also fixed a bug in that server that had filled its memory file with noise (about 95% of 187 KB). [Read more](homelab/proxmox-mcp/)
 - **Built every service on a default-deny design:** one container per service, a firewall policy for each, no SSH into containers, and patching and backups on a weekly schedule.
